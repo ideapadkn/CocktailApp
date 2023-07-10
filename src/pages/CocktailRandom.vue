@@ -65,7 +65,7 @@ getCocktail()
   margin-bottom: 50px
 .swiper
   margin-bottom: 50px
-  width: 500px
+  width: 360px
 ul
   list-style: none
   li 
@@ -85,4 +85,7 @@ ul
   font-weight: 400
   line-height: 30px
   letter-spacing: 2px
+@media screen and (max-width: 750px)
+  .swiper 
+    width: 300px
 </style>
