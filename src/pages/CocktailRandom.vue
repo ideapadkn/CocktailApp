@@ -25,6 +25,9 @@ getCocktail()
       <div class="wrapper">
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
+          <div class="cocktail-img">
+            <img :src="cocktail.strDrinkThumb" alt="">
+          </div>
           <swiper
             :slides-per-view="3"
             :space-between="50"
@@ -85,7 +88,13 @@ ul
   font-weight: 400
   line-height: 30px
   letter-spacing: 2px
+.cocktail-img 
+  display: none
+  img 
+    height: 300px
 @media screen and (max-width: 750px)
   .swiper 
     width: 300px
+  .cocktail-img 
+    display: inline-block
 </style>
