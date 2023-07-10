@@ -94,4 +94,5 @@ function removeIngredient() {
   flex-wrap: wrap
   max-height: 400px
   overflow-y: auto
+  
 </style> 

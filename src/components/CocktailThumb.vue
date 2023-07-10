@@ -28,7 +28,6 @@
     padding-bottom: 20px
     &:nth-child(3n + 3)
       padding-right: 0
-      
   .pic
     height: 120px
     width: 120px
