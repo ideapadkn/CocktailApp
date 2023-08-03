@@ -1,21 +1,21 @@
 <script setup>
-import axios from 'axios';
-import { computed, ref } from 'vue';
-import { useRoute,useRouter } from 'vue-router';
-import { COCKTAILS_BY_ID } from '../constants'
-import AppLayout from '../components/AppLayout.vue';
+import axios from "axios";
+import { computed, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { COCKTAILS_BY_ID } from "../constants";
+import AppLayout from "../components/AppLayout.vue";
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const cocktail = ref(null)
-const cocktailId = computed(() => route.path.split('/').pop())
+const cocktail = ref(null);
+const cocktailId = computed(() => route.path.split("/").pop());
 
 async function getCocktail() {
-  const data = await axios.get(`${COCKTAILS_BY_ID}${cocktailId.value}`)
-  cocktail.value = data?.data?.drinks[0]
+  const data = await axios.get(`${COCKTAILS_BY_ID}${cocktailId.value}`);
+  cocktail.value = data?.data?.drinks[0];
 }
-getCocktail()
+getCocktail();
 </script>
 
 <template>
@@ -29,8 +29,11 @@ getCocktail()
             <div>
               <ul>
                 <template v-for="(el, index) of new Array(20)">
-                  <li class="first-li" v-if="cocktail[`strIngredient${index + 1}`]">
-                    {{ cocktail[`strIngredient${index + 1}`] }} 
+                  <li
+                    class="first-li"
+                    v-if="cocktail[`strIngredient${index + 1}`]"
+                  >
+                    {{ cocktail[`strIngredient${index + 1}`] }}
                   </li>
                 </template>
               </ul>
@@ -52,12 +55,11 @@ getCocktail()
       </div>
     </AppLayout>
   </div>
-
 </template>
 
 <style lang="sass" scoped>
 @import '../assets/styles/main'
-.wrapper 
+.wrapper
   display: flex
   justify-items: center
   align-items: center
@@ -68,7 +70,7 @@ getCocktail()
   margin: 0 auto
 ul
   list-style: none
-  li 
+  li
     font-family: Raleway
     font-size: 18px
     font-style: normal

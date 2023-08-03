@@ -1,8 +1,8 @@
 <script setup>
-import { computed, defineProps } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { Back } from '@element-plus/icons-vue'
-import { ROUTES_PATHS } from '../constants'
+import { computed, defineProps } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { Back } from "@element-plus/icons-vue";
+import { ROUTES_PATHS } from "../constants";
 
 const props = defineProps({
   imgUrl: {
@@ -14,24 +14,24 @@ const props = defineProps({
   },
   isBackButtonVisible: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const routeName = computed(() => route.name)
+const routeName = computed(() => route.name);
 
 function goForCocktailRandom() {
-  router.push(ROUTES_PATHS.COCKTAIL_RANDOM)
+  router.push(ROUTES_PATHS.COCKTAIL_RANDOM);
 
   if (routeName.value === ROUTES_PATHS.COCKTAIL_RANDOM) {
-    router.go()
+    router.go();
   }
 }
 function goBack() {
-  props.backFunc ? props.backFunc() : router.go(-1)
+  props.backFunc ? props.backFunc() : router.go(-1);
 }
 </script>
 
@@ -40,15 +40,17 @@ function goBack() {
     <div :style="`background-image: url(${imgUrl})`" class="img"></div>
     <div class="main">
       <div class="btns">
-        <el-button 
+        <el-button
           v-if="isBackButtonVisible"
-          type="primary" 
-          :icon="Back" 
-          circle 
-          class="back" 
+          type="primary"
+          :icon="Back"
+          circle
+          class="back"
           @click="goBack"
         />
-        <el-button class="btn" @click="goForCocktailRandom">Get random cocktail</el-button>
+        <el-button class="btn" @click="goForCocktailRandom"
+          >Get random cocktail</el-button
+        >
       </div>
       <slot></slot>
     </div>
@@ -61,16 +63,16 @@ function goBack() {
   display: flex
   min-height: 100vh
   background-color: $background
-.img 
+.img
   width: 50%
   background-repeat: no-repeat
   background-position: 50% 50%
   background-size: cover
-.main 
+.main
   position: relative
   width: 50%
   padding: 32px 40px
-.btn 
+.btn
   position: absolute
   top: 32px
   right: 40px
@@ -83,7 +85,7 @@ function goBack() {
   &:active
     background-color: darken($accent, 10%)
     border-color: darken($accent, 10%)
-.btns 
+.btns
   display: flex
   justify-content: space-between
   align-items: center
@@ -96,6 +98,6 @@ function goBack() {
 @media screen and (max-width: 750px)
   .img
     display: none
-  .main 
+  .main
     width: 100%
 </style>

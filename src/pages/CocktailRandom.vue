@@ -1,22 +1,22 @@
 <script setup>
-import axios from 'axios';
-import { computed, ref } from 'vue';
-import { useRoute,useRouter } from 'vue-router';
-import { COCKTAILS_RANDOM, INGREDIENT_PIC } from '../constants'
-import AppLayout from '../components/AppLayout.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
+import axios from "axios";
+import { computed, ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { COCKTAILS_RANDOM, INGREDIENT_PIC } from "../constants";
+import AppLayout from "../components/AppLayout.vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
-const cocktail = ref(null)
+const cocktail = ref(null);
 
 async function getCocktail() {
-  const data = await axios.get(COCKTAILS_RANDOM)
-  cocktail.value = data?.data?.drinks[0]
+  const data = await axios.get(COCKTAILS_RANDOM);
+  cocktail.value = data?.data?.drinks[0];
 }
-getCocktail()
+getCocktail();
 </script>
 
 <template>
@@ -26,20 +26,13 @@ getCocktail()
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
           <div class="cocktail-img">
-            <img :src="cocktail.strDrinkThumb" alt="">
+            <img :src="cocktail.strDrinkThumb" alt="" />
           </div>
-          <swiper
-            :slides-per-view="3"
-            :space-between="50"
-            class="swiper"
-          >
-            <swiper-slide
-              v-for="(el, index) of new Array(20)"
-              :key="el"
-            >
-              <img :src="`${INGREDIENT_PIC}${el}-Small.png`" alt="">
+          <swiper :slides-per-view="3" :space-between="50" class="swiper">
+            <swiper-slide v-for="(el, index) of new Array(20)" :key="el">
+              <img :src="`${INGREDIENT_PIC}${el}-Small.png`" alt="" />
               <p class="first-li" v-if="cocktail[`strIngredient${index + 1}`]">
-                {{ cocktail[`strIngredient${index + 1}`] }} 
+                {{ cocktail[`strIngredient${index + 1}`] }}
               </p>
             </swiper-slide>
           </swiper>
@@ -50,12 +43,11 @@ getCocktail()
       </div>
     </AppLayout>
   </div>
-
 </template>
 
 <style lang="sass" scoped>
 @import '../assets/styles/main'
-.wrapper 
+.wrapper
   display: flex
   justify-items: center
   align-items: center
@@ -71,7 +63,7 @@ getCocktail()
   width: 360px
 ul
   list-style: none
-  li 
+  li
     font-family: Raleway
     font-size: 18px
     font-style: normal
@@ -88,13 +80,13 @@ ul
   font-weight: 400
   line-height: 30px
   letter-spacing: 2px
-.cocktail-img 
+.cocktail-img
   display: none
-  img 
+  img
     height: 300px
 @media screen and (max-width: 750px)
-  .swiper 
+  .swiper
     width: 300px
-  .cocktail-img 
+  .cocktail-img
     display: inline-block
 </style>
