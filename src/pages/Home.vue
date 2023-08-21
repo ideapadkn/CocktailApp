@@ -77,6 +77,8 @@ function removeIngredient() {
   padding: 80px 0
   text-align: center
   margin: 0 auto
+  @media (max-width: 600px)
+    width: 100%
 .select-wrapper
   margin-bottom: 50px
 .select
@@ -91,6 +93,9 @@ function removeIngredient() {
   line-height: 36px
   letter-spacing: 1.6px
   margin-bottom: 60px
+.img
+  @media (max-width: 600px)
+    width: 100%
 .cocktails
   display: flex
   align-items: center

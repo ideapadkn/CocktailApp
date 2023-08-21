@@ -28,14 +28,15 @@ getCocktail();
           <div class="cocktail-img">
             <img :src="cocktail.strDrinkThumb" alt="" />
           </div>
-          <swiper :slides-per-view="3" :space-between="50" class="swiper">
-            <swiper-slide v-for="(el, index) of new Array(20)" :key="el">
-              <img :src="`${INGREDIENT_PIC}${el}-Small.png`" alt="" />
+          <!-- BUGS -->
+          <Swiper :slides-per-view="3" :space-between="50" class="swiper">
+            <swiper-slide v-for="(el, index) of new Array(10)" :key="el">
+              <img :src="`${INGREDIENT_PIC}${el}-Small.png`" alt="Ing Pic" />
               <p class="first-li" v-if="cocktail[`strIngredient${index + 1}`]">
                 {{ cocktail[`strIngredient${index + 1}`] }}
               </p>
             </swiper-slide>
-          </swiper>
+          </Swiper>
           <div class="description">
             {{ cocktail.strInstructions }}
           </div>
@@ -56,11 +57,13 @@ getCocktail();
   padding: 80px 0
   text-align: center
   margin: 0 auto
+  @media (max-width: 600px)
+    width: 100%
 .title
   margin-bottom: 50px
 .swiper
   margin-bottom: 50px
-  width: 360px
+  width: 320px
 ul
   list-style: none
   li
@@ -84,6 +87,8 @@ ul
   display: none
   img
     height: 300px
+    @media (max-width: 600px)
+    width: 100%
 @media screen and (max-width: 750px)
   .swiper
     width: 300px

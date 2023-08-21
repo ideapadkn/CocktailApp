@@ -29,6 +29,8 @@ const props = defineProps({
   width: calc(( 100% - 76px )/3)
   margin-right: 25px
   padding-bottom: 20px
+  @media (max-width: 450px)
+    margin-right: 65px
   &:nth-child(3n + 3)
     padding-right: 0
 .pic
