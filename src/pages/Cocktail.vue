@@ -25,6 +25,9 @@ getCocktail();
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
           <div class="line"></div>
+          <div class="img">
+            <img :src="cocktail.strDrinkThumb" alt="">
+          </div>
           <div class="ingresients">
             <div>
               <ul>
@@ -68,6 +71,14 @@ getCocktail();
   padding: 80px 0
   text-align: center
   margin: 0 auto
+  @media (max-width: 600px)
+    width: 100%
+.img
+  display: none
+  @media (max-width: 600px)
+    display: block
+  img
+    width: 100%
 ul
   list-style: none
   li
